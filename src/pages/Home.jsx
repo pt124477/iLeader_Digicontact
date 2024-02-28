@@ -45,16 +45,16 @@ const Home = (props) => {
   }, []);
 
   useEffect(() => {
-    const phoneNumber = location?.state?.phoneNumber;
-    console.log("Phone number từ login:", phoneNumber);
+    // const phoneNumber = location?.state?.phoneNumber;
+    // console.log("Phone number từ login:", phoneNumber);
 
-    if (phoneNumber) {
-      // Gọi hàm để lấy danh sách học viên dựa trên số điện thoại
-      getStudentsByPhoneNumber(phoneNumber);
-    } else {
-      console.error("Không tìm thấy số điện thoại");
-    }
-    // getStudentsByPhoneNumber(84368191416);
+    // if (phoneNumber) {
+    //   // Gọi hàm để lấy danh sách học viên dựa trên số điện thoại
+    //   getStudentsByPhoneNumber(phoneNumber);
+    // } else {
+    //   console.error("Không tìm thấy số điện thoại");
+    // }
+    getStudentsByPhoneNumber(84368191416);
   }, [location]);
 
   const getStudentsByPhoneNumber = async (phoneNumber) => {
@@ -91,15 +91,15 @@ const Home = (props) => {
           CHỌN HỌC VIÊN
         </Text.Title>
       )}
-  
+
       {/* Hiển thị thông báo tải dữ liệu */}
       {isLoading && <Text>Loading...</Text>}
-  
+
       {/* Hiển thị thông báo khi không có học viên */}
       {!isLoading && students.length === 0 && (
         <Text>Số điện thoại này không có đăng ký học viên tại trung tâm.</Text>
       )}
-  
+
       {/* Hiển thị danh sách học viên nếu có */}
       {!isLoading && students.length > 0 && (
         <List>
@@ -117,7 +117,6 @@ const Home = (props) => {
       )}
     </Page>
   );
-  
 };
 
 export default Home;
